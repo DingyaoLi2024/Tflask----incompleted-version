@@ -14,6 +14,11 @@ Tflask 是一个用于金融交易回测的 Python 库，提供了一系列函�
 pip install Tflask
 ```
 
+## 作者联系方式
+
+675391321@qq.com
+Dino_Li_2023@126.com
+
 ## 贡献
 
 欢迎贡献代码或提出建议！你可以通过提交 issue 或 pull request 的方式参与贡献。
