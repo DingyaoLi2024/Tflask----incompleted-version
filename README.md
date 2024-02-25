@@ -8,11 +8,7 @@ Tflask 是一个用于金融交易回测的 Python 库，提供了一系列函�
 
 ## 安装
 
-你可以通过 pip 安装 Tflask：
-
-```bash
-pip install Tflask
-```
+目前安装功能并为上线，项目完结后会提供安装方式
 
 ## 作者联系方式
 
