@@ -19,7 +19,11 @@ Tflask是一款专为金融交易（主要针对数字货币）而设计的功�
 
 
 ## Tflask安装
-目前没有提供安装途径，以后会加上
+你可以通过 pip 安装 Tflask：
+
+```bash
+pip install Tflask
+```
 ## 导入库
 几乎库的所有方法集都以如下形式导入
 ```python
@@ -128,3 +132,160 @@ Roll是针对滚动训练设置的函数，传入参数时，除了基本的Data
 | 进度条名称 |  bar   |  str   |  '我的算法'   |  该进度条的名称，如果你的测试数据是多个，最好传入该参数，并在每个参数前进行编号，如：f'{num}--{name}'   |
 | 未到期数据行 |  expire   |  int   |  5   |  在滚动训练时，可能每一次训练都要舍弃数据的最后几行，以避免未来函数   |
 | 滚动训练回望 |  roll_length  |  int  |  2000   |  每次滚动训练需要的过去数据行数   |
+
+**代码示例**
+```python
+from Tflask.Roll import roll
+data = pd.read_csv('....')
+roll.KNN(data, ['RSI','Sigma','SM1'], ['isProfit'], 'KNN')
+```
+
+## Tflask.AllSignal
+
+这是一个根据初始信号计算最终持仓状态的函数
+在这里，因为normal signal较为简单，因此只介绍pslSignal。
+
+**传入参数**
+传入参数为ohlc：DataFrame和name_dict：ohlc中的列名（str），其中每列的参数如下表
+| 参数名             | params | 默认值 | 列类型 | 列内容说明 |
+|-------|-------|-------|-------|-------|
+|原始信号            | signal | signal | int         | 0表示空仓，1表示多头，-1表示空头   |
+|开仓时长            | LNum   | LNum   | usigned int | 0表示在df一行时间内开仓并平仓， 1表示在df当行时间开仓，下一行平仓；以此类推   |
+|开仓价格            | open   | open   | float       |    |
+|收盘价           | close  | close  | float       |    |
+|跟随开仓时间的平仓价铬 | stop   | stop  | float       |  原始信号不为1时该数值有效  |
+
+**注：**传入DataFrame中，以上表格中所有列均不可以有空值
+
+
+**代码示例**
+```python
+from Tflask.AllSignal import Signal
+
+# 传统信号
+data = pd.read_csv('....')
+Signal.normalSignals(data, {'signal':'我的信号', 'open':'开仓价', 'close':'平仓价'})
+
+# 带止盈止损的信号
+name_dict = {
+            'signal':'原始信号',
+            'LNum':'持续时长',
+            'open':'开仓价',
+            'close':'收盘价',
+            'stop':'当日开仓的平仓价'
+        }
+Signal.pslSignals(data, name_dict)
+```
+
+## Tflask.Kline
+kline的绘制分为传入参数和绘制两步：
+**代码示例**
+```python
+from Tflask.Kline import kline_with_signal as ks
+data = pd.read_csv('...')
+name_dict = {
+    'datetime':'时间',
+    'open':'开盘价',
+    'high':'最高价',
+    'low':'最低价',
+    'close':'收盘价',
+    'long_price':'多头开仓价',
+    'close_long_price':'多头平仓价',
+    'short_price':'空头开仓价',
+    'close_short_price':'空头平仓价'
+}
+Sketcher = ks(name='ETH', strategy='RSI', store_to = './')
+Sketcher.generate(ohlc=data, name_dict=name_dict)
+```
+
+
+## Tflask.Analysis
+
+
+- 计算最大回撤
+    函数名：**drawdown**
+
+    |传入参数 | 参数类型 | 参数注释 |
+    |-----|-----|-----|
+    |ohlc | dataframe |原始数据 |
+    |datetime | str |时间列的列名 |
+    |netValue | str | 净值列的列名 |
+
+    返回参数：字典
+    ```Json
+    {
+        "最大回撤": "15%",
+        "最大回撤开始时间": "2023-01-01",
+        "最大回撤结束时间": "2023-03-02"
+    }
+    ```
+**代码示例**
+```python
+from Tflask.Analysis import analysis as ans
+data = pd.read_csv('...')
+ans.drawdown(data, 'datetime', 'net_value')
+```
+
+
+- 绘制净值走势图（可生成文件或在notebook中直接绘制）
+    函数名：**sketch_netValue**和**sketch_netValue_in_notebook**
+
+    |传入参数 | 参数类型 | 参数注释 |
+    |-----|-----|-----|
+    |ohlc | dataframe |原始数据 |
+    |title | str |时间列的列名 |
+    |netValue | str | 净值列的列名 |
+
+**代码示例**
+```python
+from Tflask.Analysis import analysis as ans
+data = pd.read_csv('...')
+ans.sketch_netValue(ohlc=data, title='策略净值走势', store_to='D:/MyFile/', datetime='datetime', netValue='net_value')
+# jupyter notebook 中的写法
+ans.sketch_netValue_in_notebook(ohlc=data, title='策略净值走势', datetime='datetime', netValue='net_value')
+```
+
+- 计算因子的IC值
+    函数名：**IC**
+    |传入参数 | 参数类型 | 参数注释 |
+    |-----|-----|-----|
+    |factors | ndarray | 因子值 |
+    |returns | ndarray | 收益率 |
+
+**代码示例**
+```python
+from Tflask.Analysis import analysis as ans
+factors = np.array(data_factor)
+returns = np.array(data_return)
+ICs = ans.IC(factors, returns, 10)
+'ICs为一个ndarray，内部存储着每个时刻的IC值'
+```
+- 根据多个资产的持仓状态和净值变化，计算策略的整体评价指标并打印
+
+    函数名：**TotalAnalysis**
+    |传入参数 | 参数类型 | 默认值 |参数注释 | 二级参数 | 参数类型 | 参数说明 |
+    |-----|-----|-----|---|---|---|---|
+    |ohlc | dataframe |  | 原始数据 |
+    |strategy_name | str | 我的策略 | 策略名称 |
+    |name_dict| dict || 列名 |
+    ||||| datetime |str||
+    ||||| total |str||
+    ||||| conditions |list[str]| 所有资产状态的列名称 |
+    ||||| symbols |list[str]| 所有资产的列名称（需要与资产状态的顺序一致） |
+    ||||| primary |list[str]| 主要资产的列名称 |
+    ||||| base |int| 基准收益率，默认为0 |
+
+**代码示例**
+```python
+from Tflask.Analysis import analysis as ans
+data = pd.read_csv('...')
+symbols = ['BTC', 'ETH', .....]
+name_dict = {
+    'datetime':'datetime',
+    'total':'total_value',
+    'conditions':[f'{symbol}_cond' for symbol in symbols],
+    'symbols':[f'{symbol}_value' for symbol in symbols],
+    'primary':[f'{symbol}_cond' for symbol in symbols[100:]]
+}
+result_data = ans.TotalAnalysis(ohlc=data, strategy_name='我的策略', name_dict=name_dict, isPrint=True)
+```
