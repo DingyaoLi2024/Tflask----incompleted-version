@@ -174,7 +174,7 @@ class analysis:
             'title':['Strategy Name', 'Entries', 'Profit', 'Max Drawdown', 'Win Rate'],
             'value':[strategy_name, len(name_dict['conditions']), total_indicators['整体利润率'], total_indicators['最大回撤'], total_indicators['胜率']]
         }
-        primary = {}
+        primary = []
         if name_dict['primary']:
             primary = [['资产名', '利润率', '最大回撤', '夏普比率', '开仓次数', '盈利次数']]
             for symbol in name_dict['primary']:
