@@ -15,7 +15,7 @@ class roll:
         standardise_test = (X_test - row_of_means) / row_of_stds
         return standardise_data, standardise_test
 
-    def KNN(df, factors, labels, bar='', k:int=5, expire=5, roll_length=2000):
+    def KNN(df, factors, labels, bar='我的算法', k:int=5, expire=5, roll_length=2000):
 
         from sklearn.neighbors import KNeighborsClassifier
         # # # 训练 KNN 模型
@@ -52,7 +52,7 @@ class roll:
 
         return data
 
-    def SVM(df, factors, labels, bar='', C:float=1.0, kernel:str='rbf', gamma='scale', expire=5, roll_length:int=2000):
+    def SVM(df, factors, labels, bar='我的算法', C:float=1.0, kernel:str='rbf', gamma='scale', expire=5, roll_length:int=2000):
         
         from sklearn.svm import SVC
         # # 创建并训练 SVM 模型
@@ -88,7 +88,7 @@ class roll:
 
         return data
 
-    def Tree(df, factors, labels, bar='', criterion='gini', max_depth=None, expire=5, roll_length:int=2000):
+    def Tree(df, factors, labels, bar='我的算法', criterion='gini', max_depth=None, expire=5, roll_length:int=2000):
 
         from sklearn.tree import DecisionTreeClassifier
         # # 创建并训练决策树模型
@@ -122,7 +122,7 @@ class roll:
         return data
         
 
-    def LogisticRegression(df, factors, labels, bar='', penalty='l2', C=1.0, solver='lbfgs', expire=5, roll_length:int=2000):
+    def LogisticRegression(df, factors, labels, bar='我的算法', penalty='l2', C=1.0, solver='lbfgs', expire=5, roll_length:int=2000):
         
         from sklearn.linear_model import LogisticRegression
         # # 创建并训练逻辑回归模型

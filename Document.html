@@ -1,0 +1,697 @@
+<!DOCTYPE html><html><head>
+      <title>Document</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/dino/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.11/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="tflask">Tflask </h1>
+<h2 id="tflask简介">Tflask简介 </h2>
+<p>Tflask是一款专为金融交易（主要针对数字货币）而设计的功能强大的Python库，旨在提供全面的回测和实盘支持。其主要功能包括但不限于：</p>
+<ul>
+<li>
+<p><strong>数据获取与处理</strong>：Tflask提供了与币安API的集成，使用户能够方便地获取现货和永续合约等多种金融产品的历史和实时数据。这些数据可以通过Tflask内置的数据处理功能进行预处理和清洗，以满足用户的需求。</p>
+</li>
+<li>
+<p><strong>交易信号生成</strong>：基于用户定义的交易策略和因子，Tflask能够生成买卖信号，用于指导交易决策。用户可以根据自己的需求和市场情况定义各种复杂的交易规则和信号算法。</p>
+</li>
+<li>
+<p><strong>K线图绘制</strong>：Tflask支持绘制K线图，并能够在图表上标注多空头的开仓和平仓信号，以帮助用户直观地分析交易行为和结果。</p>
+</li>
+<li>
+<p><strong>风险管理</strong>：Tflask提供了灵活的风险管理功能，包括设定止盈止损价格、控制最大持仓时长等，帮助用户合理控制风险，最大限度地保护资金。</p>
+</li>
+<li>
+<p><strong>机器学习支持</strong>：对于使用机器学习建立交易策略的用户，Tflask提供了滚动训练的方法，使用户能够动态地根据市场变化不断调整和优化模型，提高交易效果。</p>
+</li>
+<li>
+<p><strong>策略模板</strong>：Tflask提供了一套投机策略的父类模板，方便用户根据自己的需求和偏好快速构建自己的交易策略，并且支持用户自定义扩展。</p>
+</li>
+</ul>
+<p>在使用Tflask之前，用户需要准备好相关的数据、因子计算方法和信号生成算法。其中，数据应以DataFrame的格式传入，而其他参数则以字典的形式传入。通过Tflask提供的丰富功能和灵活性，用户能够更加方便地进行金融交易的回测和实盘操作，并且更好地理解和掌握市场走势。</p>
+<h2 id="tflask安装">Tflask安装 </h2>
+<p>你可以通过 pip 安装 Tflask：</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>pip <span class="token function">install</span> Tflask
+</code></pre><h2 id="导入库">导入库 </h2>
+<p>几乎库的所有方法集都以如下形式导入</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>PSL <span class="token keyword keyword-import">import</span> psl
+<span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>Roll <span class="token keyword keyword-import">import</span> roll
+<span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>Kline <span class="token keyword keyword-import">import</span> kline_with_signal <span class="token keyword keyword-as">as</span> ks
+</code></pre><h2 id="tflaskgetdata">Tflask.GetData </h2>
+<p>getData分为两个部分，每个部分都有两个函数：<strong>get_hist_data</strong> 和 <strong>get_high_and_low</strong> 。</p>
+<ul>
+<li>getF.get_hist_data</li>
+<li>getS.get_hist_data</li>
+</ul>
+<p><strong>传入参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>params</th>
+<th>格式</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交易对</td>
+<td>symbol</td>
+<td>字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>时间粒度</td>
+<td>interval</td>
+<td>字符串</td>
+<td>1m, 15m, 30m, 1h, 2h, 4h, 1d</td>
+</tr>
+<tr>
+<td>开始时间</td>
+<td>start_time</td>
+<td>字符串</td>
+<td>UTC时间，格式如："2024-03-15T00:00:00.000Z"</td>
+</tr>
+<tr>
+<td>结束时间</td>
+<td>end_time</td>
+<td>字符串</td>
+<td>UTC时间，格式如："2024-03-15T00:00:00.000Z"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回参数</strong><br>
+返回值为一个包含时间、开高低收、成交量等数据的DataFrame（列名的英文很好的解释了数据）</p>
+<p><strong>代码示例</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>GetData <span class="token keyword keyword-import">import</span> getS <span class="token keyword keyword-as">as</span> gs
+df <span class="token operator">=</span> gs<span class="token punctuation">.</span>get_hist_data<span class="token punctuation">(</span>symbol<span class="token operator">=</span><span class="token string">'BTCUSDT'</span><span class="token punctuation">,</span> interval<span class="token operator">=</span><span class="token string">'1d'</span><span class="token punctuation">,</span> start_time<span class="token operator">=</span><span class="token string">"2024-01-01T00:00:00.000Z"</span><span class="token punctuation">,</span> end_time<span class="token operator">=</span><span class="token string">"2024-02-01T00:00:00.000Z"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><p>get_high_and_low具有同样的输入参数，但返回的是最高价和最低价的两个ndarray。</p>
+<h2 id="tflaskpsl">Tflask.PSL </h2>
+<p>PSL主要是针对已经给出最大持仓时长、止盈价格和止损价格的订单作出分析，判断每一笔仓位订单会在何时结束，结束状态是止盈止损还是到期等。</p>
+<p>PSL有两个函数：long和short，分别表示在多头和空头时的判断，由于其具有同样的参数传入和返回值，因此只介绍long。</p>
+<p><strong>传入参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>params</th>
+<th>参数类型</th>
+<th>二级参数</th>
+<th>params2</th>
+<th>默认值</th>
+<th>参数类型</th>
+<th>参数说明</th>
+<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pandas数据</td>
+<td>ohlc</td>
+<td>DataFrame</td>
+<td></td>
+<td></td>
+<td></td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据列名字典</td>
+<td>name_dict</td>
+<td>字典</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>字典中的数据均为字符串，代表ohlc中的列名，具体数据请存放与ohlc中</td>
+<td>是</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>开仓价</td>
+<td>open</td>
+<td>open</td>
+<td>字符串</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>最高价</td>
+<td>high</td>
+<td>high</td>
+<td>字符串</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>最低价</td>
+<td>low</td>
+<td>low</td>
+<td>字符串</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>平仓价</td>
+<td>close</td>
+<td>clsoe</td>
+<td>字符串</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>止盈价</td>
+<td>ps</td>
+<td></td>
+<td>字符串</td>
+<td></td>
+<td>否</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>止损价</td>
+<td>ls</td>
+<td></td>
+<td>字符串</td>
+<td></td>
+<td>否，但ps与ls至少传入一个</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>最高持续时长</td>
+<td>remain</td>
+<td></td>
+<td>字符串</td>
+<td>0代表该时间段内购买，在该时段收盘前必须卖出；1代表在该时间段内购买，下一时间段的首盘前必须卖出；以此类推</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p>返回值为一个DataFrame，除了包含输入ohlc的列，还增添了新的列。<br>
+<strong>注：</strong> long会返回L开头或包含L的列名，而short会返回S开头或包含S的列名</p>
+<p><strong>返回参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>参数说明</th>
+<th>参数类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LpsNum</td>
+<td>多头止盈平仓时间</td>
+<td>int</td>
+<td>与传入参数中的remain类似，0代表该时间段平仓，1代表下个时间段平仓，以此类推，后面的Num类似 （如果ps未传入参数则不返回该参数）</td>
+</tr>
+<tr>
+<td>LIsPS</td>
+<td>多头仓位是否止盈</td>
+<td>bool</td>
+<td>（如果ps未传入参数则不返回该参数）</td>
+</tr>
+<tr>
+<td>psLCP</td>
+<td>多头止盈仓位平仓价格</td>
+<td>float</td>
+<td>如果止盈，则平仓价为止盈价格，如果不止盈，则平仓价为到期收盘价 （如果ps未传入参数则不返回该参数）</td>
+</tr>
+<tr>
+<td>LlsNum</td>
+<td>多头止损平仓时间</td>
+<td>int</td>
+<td>（如果ls未传入参数则不返回该参数）</td>
+</tr>
+<tr>
+<td>LIsLS</td>
+<td>多头仓位是否止损</td>
+<td>bool</td>
+<td>（如果ls未传入参数则不返回该参数）</td>
+</tr>
+<tr>
+<td>lsLCP</td>
+<td>多头止损仓位平仓价格</td>
+<td>float</td>
+<td>（如果ls未传入参数则不返回该参数）</td>
+</tr>
+<tr>
+<td>Lcond</td>
+<td>多头仓位平仓状态</td>
+<td>字符串</td>
+<td>'ps'代表止盈，'ls'代表止损， 'expire'代表到期平仓</td>
+</tr>
+<tr>
+<td>LNum</td>
+<td>多头仓位平仓时间</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>LCP</td>
+<td>多头仓位平仓价格</td>
+<td>float</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>代码示例</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>PSL <span class="token keyword keyword-import">import</span> psl
+name_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'datetime'</span><span class="token punctuation">:</span> <span class="token string">'时间'</span><span class="token punctuation">,</span>
+    <span class="token string">'open'</span><span class="token punctuation">:</span> <span class="token string">'开盘价'</span><span class="token punctuation">,</span>
+    <span class="token string">'high'</span><span class="token punctuation">:</span> <span class="token string">'最高价'</span><span class="token punctuation">,</span>
+    <span class="token string">'low'</span><span class="token punctuation">:</span> <span class="token string">'最低价'</span><span class="token punctuation">,</span>
+    <span class="token string">'close'</span><span class="token punctuation">:</span> <span class="token string">'收盘价'</span><span class="token punctuation">,</span>
+    <span class="token string">'ps'</span><span class="token punctuation">:</span> <span class="token string">'止盈价'</span><span class="token punctuation">,</span>
+    <span class="token string">'ls'</span><span class="token punctuation">:</span> <span class="token string">'止损价'</span><span class="token punctuation">,</span>
+    <span class="token string">'remain'</span><span class="token punctuation">:</span><span class="token string">'持续时长'</span>
+<span class="token punctuation">}</span>
+psl<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">(</span>ohlc <span class="token operator">=</span> df<span class="token punctuation">,</span> name_dict <span class="token operator">=</span> name_dict<span class="token punctuation">)</span>
+</code></pre><h2 id="tflaskroll">Tflask.Roll </h2>
+<p>Roll是针对滚动训练设置的函数，传入参数时，除了基本的DataFrame、因子列名、标签列名，还需要传入一个参数函数（参数函数的传入参数：X_train, y_train, X_test;参数函数的返回参数：y_predict）。当然，如果你的需求并不复杂，你需要使用的机器学习算法只是KNN、支持向量机、决策树或者逻辑回归中的一种，你是不需要传入参数函数的（注意：这些情况下需要你已经安装了sklearn库）。</p>
+<p>库中有以下函数</p>
+<ul>
+<li>KNN</li>
+<li>SVM</li>
+<li>LogisticRegression</li>
+<li>Tree</li>
+<li>DIYalgorithm</li>
+</ul>
+<p>对于DIYalgorithm，我们需要多传入一个参数函数。而其他函数的参数与之完全相同，因此，我们只介绍DIYalgorithm的情况。</p>
+<p><strong>传入参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>params</th>
+<th>参数类型</th>
+<th>默认值</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表格</td>
+<td>df</td>
+<td>pd.DataFrame</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>因子名</td>
+<td>factors</td>
+<td>list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>标签名</td>
+<td>labels</td>
+<td>list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>学习算法</td>
+<td>algorithm</td>
+<td>Callable</td>
+<td></td>
+<td>该函数需传入三个ndarray：训练集数据，训练集标签，测试集数据，返回一个ndarray，为预测数据</td>
+</tr>
+<tr>
+<td>进度条名称</td>
+<td>bar</td>
+<td>str</td>
+<td>'我的算法'</td>
+<td>该进度条的名称，如果你的测试数据是多个，最好传入该参数，并在每个参数前进行编号，如：f'{num}--{name}'</td>
+</tr>
+<tr>
+<td>未到期数据行</td>
+<td>expire</td>
+<td>int</td>
+<td>5</td>
+<td>在滚动训练时，可能每一次训练都要舍弃数据的最后几行，以避免未来函数</td>
+</tr>
+<tr>
+<td>滚动训练回望</td>
+<td>roll_length</td>
+<td>int</td>
+<td>2000</td>
+<td>每次滚动训练需要的过去数据行数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>代码示例</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>Roll <span class="token keyword keyword-import">import</span> roll
+data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'....'</span><span class="token punctuation">)</span>
+roll<span class="token punctuation">.</span>KNN<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'RSI'</span><span class="token punctuation">,</span><span class="token string">'Sigma'</span><span class="token punctuation">,</span><span class="token string">'SM1'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'isProfit'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'KNN'</span><span class="token punctuation">)</span>
+</code></pre><h2 id="tflaskallsignal">Tflask.AllSignal </h2>
+<p>这是一个根据初始信号计算最终持仓状态的函数<br>
+在这里，因为normal signal较为简单，因此只介绍pslSignal。</p>
+<p><strong>传入参数</strong><br>
+传入参数为ohlc：DataFrame和name_dict：ohlc中的列名（str），其中每列的参数如下表</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>params</th>
+<th>默认值</th>
+<th>列类型</th>
+<th>列内容说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原始信号</td>
+<td>signal</td>
+<td>signal</td>
+<td>int</td>
+<td>0表示空仓，1表示多头，-1表示空头</td>
+</tr>
+<tr>
+<td>开仓时长</td>
+<td>LNum</td>
+<td>LNum</td>
+<td>usigned int</td>
+<td>0表示在df一行时间内开仓并平仓， 1表示在df当行时间开仓，下一行平仓；以此类推</td>
+</tr>
+<tr>
+<td>开仓价格</td>
+<td>open</td>
+<td>open</td>
+<td>float</td>
+<td></td>
+</tr>
+<tr>
+<td>收盘价</td>
+<td>close</td>
+<td>close</td>
+<td>float</td>
+<td></td>
+</tr>
+<tr>
+<td>跟随开仓时间的平仓价铬</td>
+<td>stop</td>
+<td>stop</td>
+<td>float</td>
+<td>原始信号不为1时该数值有效</td>
+</tr>
+</tbody>
+</table>
+<p>**注：**传入DataFrame中，以上表格中所有列均不可以有空值</p>
+<p><strong>代码示例</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>AllSignal <span class="token keyword keyword-import">import</span> Signal
+
+<span class="token comment"># 传统信号</span>
+data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'....'</span><span class="token punctuation">)</span>
+Signal<span class="token punctuation">.</span>normalSignals<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'signal'</span><span class="token punctuation">:</span><span class="token string">'我的信号'</span><span class="token punctuation">,</span> <span class="token string">'open'</span><span class="token punctuation">:</span><span class="token string">'开仓价'</span><span class="token punctuation">,</span> <span class="token string">'close'</span><span class="token punctuation">:</span><span class="token string">'平仓价'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 带止盈止损的信号</span>
+name_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">'signal'</span><span class="token punctuation">:</span><span class="token string">'原始信号'</span><span class="token punctuation">,</span>
+            <span class="token string">'LNum'</span><span class="token punctuation">:</span><span class="token string">'持续时长'</span><span class="token punctuation">,</span>
+            <span class="token string">'open'</span><span class="token punctuation">:</span><span class="token string">'开仓价'</span><span class="token punctuation">,</span>
+            <span class="token string">'close'</span><span class="token punctuation">:</span><span class="token string">'收盘价'</span><span class="token punctuation">,</span>
+            <span class="token string">'stop'</span><span class="token punctuation">:</span><span class="token string">'当日开仓的平仓价'</span>
+        <span class="token punctuation">}</span>
+Signal<span class="token punctuation">.</span>pslSignals<span class="token punctuation">(</span>data<span class="token punctuation">,</span> name_dict<span class="token punctuation">)</span>
+</code></pre><h2 id="tflaskanalysis">Tflask.Analysis </h2>
+<ul>
+<li>
+<p>计算最大回撤<br>
+函数名：<strong>drawdown</strong></p>
+<table>
+<thead>
+<tr>
+<th>传入参数</th>
+<th>参数类型</th>
+<th>参数注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ohlc</td>
+<td>dataframe</td>
+<td>原始数据</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>str</td>
+<td>时间列的列名</td>
+</tr>
+<tr>
+<td>netValue</td>
+<td>str</td>
+<td>净值列的列名</td>
+</tr>
+</tbody>
+</table>
+<p>返回参数：字典</p>
+<pre data-role="codeBlock" data-info="Json" class="language-json Json"><code><span class="token punctuation">{</span>
+    <span class="token property">"最大回撤"</span><span class="token operator">:</span> <span class="token string">"15%"</span><span class="token punctuation">,</span>
+    <span class="token property">"最大回撤开始时间"</span><span class="token operator">:</span> <span class="token string">"2023-01-01"</span><span class="token punctuation">,</span>
+    <span class="token property">"最大回撤结束时间"</span><span class="token operator">:</span> <span class="token string">"2023-03-02"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<p><strong>代码示例</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>Analysis <span class="token keyword keyword-import">import</span> analysis <span class="token keyword keyword-as">as</span> ans
+data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'...'</span><span class="token punctuation">)</span>
+ans<span class="token punctuation">.</span>drawdown<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token string">'datetime'</span><span class="token punctuation">,</span> <span class="token string">'net_value'</span><span class="token punctuation">)</span>
+</code></pre><ul>
+<li>
+<p>绘制净值走势图（可生成文件或在notebook中直接绘制）<br>
+函数名：<strong>sketch_netValue</strong>和<strong>sketch_netValue_in_notebook</strong></p>
+<table>
+<thead>
+<tr>
+<th>传入参数</th>
+<th>参数类型</th>
+<th>参数注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ohlc</td>
+<td>dataframe</td>
+<td>原始数据</td>
+</tr>
+<tr>
+<td>title</td>
+<td>str</td>
+<td>时间列的列名</td>
+</tr>
+<tr>
+<td>netValue</td>
+<td>str</td>
+<td>净值列的列名</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p><strong>代码示例</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>Analysis <span class="token keyword keyword-import">import</span> analysis <span class="token keyword keyword-as">as</span> ans
+data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'...'</span><span class="token punctuation">)</span>
+ans<span class="token punctuation">.</span>sketch_netValue<span class="token punctuation">(</span>ohlc<span class="token operator">=</span>data<span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">'策略净值走势'</span><span class="token punctuation">,</span> store_to<span class="token operator">=</span><span class="token string">'D:/MyFile/'</span><span class="token punctuation">,</span> datetime<span class="token operator">=</span><span class="token string">'datetime'</span><span class="token punctuation">,</span> netValue<span class="token operator">=</span><span class="token string">'net_value'</span><span class="token punctuation">)</span>
+<span class="token comment"># jupyter notebook 中的写法</span>
+ans<span class="token punctuation">.</span>sketch_netValue_in_notebook<span class="token punctuation">(</span>ohlc<span class="token operator">=</span>data<span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">'策略净值走势'</span><span class="token punctuation">,</span> datetime<span class="token operator">=</span><span class="token string">'datetime'</span><span class="token punctuation">,</span> netValue<span class="token operator">=</span><span class="token string">'net_value'</span><span class="token punctuation">)</span>
+</code></pre><ul>
+<li>计算因子的IC值<br>
+函数名：<strong>IC</strong>
+<table>
+<thead>
+<tr>
+<th>传入参数</th>
+<th>参数类型</th>
+<th>参数注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>factors</td>
+<td>ndarray</td>
+<td>因子值</td>
+</tr>
+<tr>
+<td>returns</td>
+<td>ndarray</td>
+<td>收益率</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p><strong>代码示例</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>Analysis <span class="token keyword keyword-import">import</span> analysis <span class="token keyword keyword-as">as</span> ans
+factors <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>data_factor<span class="token punctuation">)</span>
+returns <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>data_return<span class="token punctuation">)</span>
+ICs <span class="token operator">=</span> ans<span class="token punctuation">.</span>IC<span class="token punctuation">(</span>factors<span class="token punctuation">,</span> returns<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token string">'ICs为一个ndarray，内部存储着每个时刻的IC值'</span>
+</code></pre><ul>
+<li>
+<p>根据多个资产的持仓状态和净值变化，计算策略的整体评价指标并打印</p>
+<p>函数名：<strong>TotalAnalysis</strong></p>
+<table>
+<thead>
+<tr>
+<th>传入参数</th>
+<th>参数类型</th>
+<th>默认值</th>
+<th>参数注释</th>
+<th>二级参数</th>
+<th>参数类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ohlc</td>
+<td>dataframe</td>
+<td></td>
+<td>原始数据</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>strategy_name</td>
+<td>str</td>
+<td>我的策略</td>
+<td>策略名称</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name_dict</td>
+<td>dict</td>
+<td></td>
+<td>列名</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>datetime</td>
+<td>str</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>total</td>
+<td>str</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>conditions</td>
+<td>list[str]</td>
+<td>所有资产状态的列名称</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>symbols</td>
+<td>list[str]</td>
+<td>所有资产的列名称（需要与资产状态的顺序一致）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>primary</td>
+<td>list[str]</td>
+<td>主要资产的列名称</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>base</td>
+<td>int</td>
+<td>基准收益率，默认为0</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p><strong>代码示例</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> Tflask<span class="token punctuation">.</span>Analysis <span class="token keyword keyword-import">import</span> analysis <span class="token keyword keyword-as">as</span> ans
+data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'...'</span><span class="token punctuation">)</span>
+symbols <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'BTC'</span><span class="token punctuation">,</span> <span class="token string">'ETH'</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+name_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'datetime'</span><span class="token punctuation">:</span><span class="token string">'datetime'</span><span class="token punctuation">,</span>
+    <span class="token string">'total'</span><span class="token punctuation">:</span><span class="token string">'total_value'</span><span class="token punctuation">,</span>
+    <span class="token string">'conditions'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">{</span>symbol<span class="token punctuation">}</span></span><span class="token string">_cond'</span></span> <span class="token keyword keyword-for">for</span> symbol <span class="token keyword keyword-in">in</span> symbols<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'symbols'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">{</span>symbol<span class="token punctuation">}</span></span><span class="token string">_value'</span></span> <span class="token keyword keyword-for">for</span> symbol <span class="token keyword keyword-in">in</span> symbols<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'primary'</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">{</span>symbol<span class="token punctuation">}</span></span><span class="token string">_cond'</span></span> <span class="token keyword keyword-for">for</span> symbol <span class="token keyword keyword-in">in</span> symbols<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+result_data <span class="token operator">=</span> ans<span class="token punctuation">.</span>TotalAnalysis<span class="token punctuation">(</span>ohlc<span class="token operator">=</span>data<span class="token punctuation">,</span> strategy_name<span class="token operator">=</span><span class="token string">'我的策略'</span><span class="token punctuation">,</span> name_dict<span class="token operator">=</span>name_dict<span class="token punctuation">,</span> isPrint<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
