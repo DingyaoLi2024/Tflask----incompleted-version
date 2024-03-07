@@ -60,9 +60,9 @@ class Signal:
         df.loc[df[nameDict['stop']].isna(), nameDict['stop']] = df['open']
         signals = df[nameDict['signal']].fillna(0).astype(np.int64).tolist()
         LNums = df[nameDict['LNum']].fillna(0).astype(np.int64).tolist()
-        opens = df[nameDict['open']].fillna(method='ffill').astype(np.float64).tolist()
-        closes = df[nameDict['close']].fillna(method='ffill').astype(np.float64).tolist()
-        stops = df[nameDict['stop']].fillna(method='ffill').astype(np.float64).tolist()
+        opens = df[nameDict['open']].fillna(method='ffill').fillna(method='bfill').astype(np.float64).tolist()
+        closes = df[nameDict['close']].fillna(method='ffill').fillna(method='bfill').astype(np.float64).tolist()
+        stops = df[nameDict['stop']].fillna(method='ffill').fillna(method='bfill').astype(np.float64).tolist()
 
         # 调用C++函数
         result = netValue.pslSignal(signals, LNums, opens, closes, stops)
