@@ -70,6 +70,7 @@ class Signal:
         # 提取返回的结果
         data = ohlc.copy()
         data['fsSignal'] = np.array(result['allSignal'])
+        data['fsSignal'] = data['fsSignal'].astype(np.int64)
         data['fsReturn'] = np.array(result['return'])
         data['fsOpCond'] = np.array(result['opCond'])
 
