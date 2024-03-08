@@ -93,9 +93,10 @@ class analysis:
             name_dict['primary'] = []
         if 'base' not in name_dict:
             name_dict['base'] = 0
+        
 
         # 错误
-        if len(name_dict['conditions'])!=len(name_dict['symbols']) or len(name_dict['conditions'])!=len(name_dict['total']) or len(name_dict['conditions'])==0:
+        if len(name_dict['conditions'])!=len(name_dict['symbols']) or len(name_dict['conditions'])==0:
             raise ValueError("输入参数名不一致")
         for ele in name_dict['primary']:
             if ele not in name_dict['symbols']:
@@ -108,8 +109,8 @@ class analysis:
         end_time = ohlc[name_dict['datetime']].tolist()[-1]
         import ccxt
         binance_exchange = ccxt.binance()
-        initial_stamp = binance_exchange(initial_time)
-        end_stamp = binance_exchange(end_time)
+        initial_stamp = binance_exchange.parse8601(initial_time)
+        end_stamp = binance_exchange.parse8601(end_time)
         interval = (end_stamp - initial_stamp) / (365*3600*24*1000)
         if interval <= 0:
             raise ValueError("时间传入错误，初始时间大于结束时间")
@@ -132,8 +133,8 @@ class analysis:
         Calmar = round(CAGR * 100 / float(drawdown_info["最大回撤"][:-1]), 2)
 
         Best_day = round(np.max(rates), 4)
-        worst_day = round(np.min(rates, 4))
-        Days_data = (np.sum(rates>0.01), np.sum((rates<=0.01) & (rates>0)), np.sum(rates<=0))
+        worst_day = round(np.min(rates), 4)
+        Days_data = (np.sum(rates>0.01), np.sum((rates<=0.01) & (rates>-0.01)), np.sum(rates<=-0.01))
 
         creatings_times = 0
         profits_times = 0
@@ -158,8 +159,8 @@ class analysis:
             'Sortino':                Sortino,
             '夏普比率':                 Sharp,
             'Calmar':                 Calmar,
-            '单位时间最大利润率':        f'{Best_day*100}%',
-            '单位时间最大损失率':        f'{worst_day*100}%',
+            '单位时间最大利润率':        f'{round(Best_day*100,2)}%',
+            '单位时间最大损失率':        f'{round(worst_day*100,2)}%',
             '天数：盈利/保持/亏损':      Days_data,
             '胜率':                    f'{win_rate*100}%',
             '账户最低净值':             round(min_balance, 2),
@@ -211,6 +212,7 @@ class analysis:
             
             print(table1)
             print(table2)
-            print(table3)
+            if name_dict['primary']:
+                print(table3)
 
         return result
