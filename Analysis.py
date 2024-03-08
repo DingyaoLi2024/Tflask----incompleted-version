@@ -126,9 +126,9 @@ class analysis:
         rates = np.diff(net_value) / net_value[:-1]
 
         total_profit = round(net_value[-1] / net_value[0] - 1, 4)
-        CAGR = round((net_value[-1] / net_value[0]) ** (1 / interval), 4)
-        Sortino = round((np.mean(rates) - name_dict['base']) / (np.std(rates[rates<name_dict['base']])), 2)
-        Sharp = round((np.mean(rates) - name_dict['base']) / (np.std(rates)), 2)
+        CAGR = round((net_value[-1] / net_value[0]) ** (1 / interval) - 1, 4)
+        Sortino = round((total_profit - name_dict['base']) / (np.std(rates[rates<name_dict['base']])), 2)
+        Sharp = round((total_profit - name_dict['base']) / (np.std(net_value)), 2)
         drawdown_info = analysis.drawdown(ohlc, datetime=name_dict['datetime'], netValue=name_dict['total'])
         Calmar = round(CAGR * 100 / float(drawdown_info["最大回撤"][:-1]), 2)
 
@@ -154,18 +154,18 @@ class analysis:
         drawdown_end = drawdown_info["最大回撤结束时间"]
 
         total_indicators = {
-            '整体利润率':               f'{total_profit*100}%',
-            '复合年增长率':             f'{CAGR*100}%',
+            '整体利润率':               f'{round(total_profit*100,2):.2f}%',
+            '复合年增长率':             f'{round(CAGR*100, 2):.2f}%',
             'Sortino':                Sortino,
             '夏普比率':                 Sharp,
             'Calmar':                 Calmar,
             '单位时间最大利润率':        f'{round(Best_day*100,2)}%',
             '单位时间最大损失率':        f'{round(worst_day*100,2)}%',
             '天数：盈利/保持/亏损':      Days_data,
-            '胜率':                    f'{win_rate*100}%',
+            '胜率':                    f'{round(win_rate*100,2)}%',
             '账户最低净值':             round(min_balance, 2),
             '账户最高净值':             round(max_balance, 2),
-            '低于初始净值的时间占比':     f'{round(account_underwater, 4)*100}%',
+            '低于初始净值的时间占比':     f'{round(account_underwater*100, 2)}%',
             '最大回撤':                 max_drawdown,
             '最大回撤开始时间':          drawdown_start,
             '最大回撤结束时间':          drawdown_end,
@@ -185,9 +185,9 @@ class analysis:
                 drawdown = analysis.drawdown(ohlc, name_dict['datetime'], symbol)
                 sharp_ratio = (rate - name_dict['base']) / np.std(rates)
                 p_nets = ohlc[symbol].astype(np.float64).tolist()
-                p_conds = ohlc[name_dict['conditions'][name_dict['symbols'].index(symbol)]].astype(np.float64).tolist()
+                p_conds = ohlc[name_dict['conditions'][name_dict['symbols'].index(symbol)]].astype(np.int64).tolist()
                 position_info = WinRate.static_of_position(p_conds, p_nets)
-                primary += [symbol, rate, drawdown, sharp_ratio, position_info['position_creating_times'], position_info['position_profit_times']]
+                primary += [[symbol, rate, drawdown, sharp_ratio, position_info['position_creating_times'], position_info['position_profit_times']]]
 
         result = {'策略速看':strategy_info, '整体指标':total_indicators, '主流资产':primary}
 
@@ -207,7 +207,7 @@ class analysis:
             # primary
             if name_dict['primary']:
                 table3 = PrettyTable(primary[0])
-                for data in enumerate(primary[1:]):
+                for data in primary[1:]:
                     table3.add_row(data)
             
             print(table1)
