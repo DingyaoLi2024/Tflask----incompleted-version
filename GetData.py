@@ -1,7 +1,7 @@
 import ccxt
 import pandas as pd
 import numpy as np
-import httpx
+import requests
 
 class getS:
 
@@ -44,7 +44,7 @@ class getS:
             'limit':500,
             'startTime':start_stamp
             }
-            response = httpx.get(url=baseurl+kline_path, params=query_dict)
+            response = requests.get(url=baseurl+kline_path, params=query_dict)
             single_kline = response.json()
             if single_kline[0][0] == start_stamp:
                 if single_kline[-1][0] > end_stamp:
@@ -168,7 +168,7 @@ class getF:
             'limit':500,
             'startTime':start_stamp
             }
-            response = httpx.get(url=baseurl+kline_path, params=query_dict)
+            response = requests.get(url=baseurl+kline_path, params=query_dict)
             single_kline = response.json()
             if single_kline[0][0] == start_stamp:
                 if single_kline[-1][0] > end_stamp:
