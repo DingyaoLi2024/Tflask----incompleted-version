@@ -2,6 +2,8 @@ import ccxt
 import pandas as pd
 import numpy as np
 import requests
+import sys
+import threading
 
 class getS:
 
@@ -44,7 +46,16 @@ class getS:
             'limit':500,
             'startTime':start_stamp
             }
-            response = requests.get(url=baseurl+kline_path, params=query_dict)
+            for _ in range(5):
+                try:
+                    response = requests.get(url=baseurl+kline_path, params=query_dict)
+                    break
+                except:
+                    if _ < 4:
+                        continue
+                    else:
+                        print('响应失败')
+                        sys.exit()
             single_kline = response.json()
             if single_kline[0][0] == start_stamp:
                 if single_kline[-1][0] > end_stamp:
@@ -79,52 +90,7 @@ class getS:
         low_column = np.array(hist_data['low'])
         return high_column.astype(np.float64), low_column.astype(np.float64)
 
-    # # 多线程准备工作—编写函数
-    # def get_part(symbols, interval:str, start_time:str, end_time:str, first, last, store_to='./'):
-        
-    #     for symbol in symbols[first: last]:
-    #         try:
-    #             df = getS.get_hist_data(symbol=symbol, interval=interval, start_time=start_time, end_time=end_time)
-    #             df.to_csv(store_to + f'S{symbol}.csv', index=False)
-    #         except:
-    #             pass
-    
-    # # 多线程获取多个数据
-    # def ThreadGetAllData(interval:str, start_time:str, end_time:str, store_to='./', thread_num=15, timing=True):
 
-    #     #设置币种
-    #     baseurl = 'https://api.binance.com'  #初始化baseurl
-    #     info_path = '/api/v3/exchangeInfo'
-    #     response = requests.get(baseurl+info_path)
-    #     exchange_info = response.json()
-    #     symbols_values_list = exchange_info['symbols']
-    #     symbols = []
-    #     for symbol_dict in symbols_values_list:
-    #         single_symbol = symbol_dict.get('symbol')
-    #         symbols.append(single_symbol)
-
-    #     start_time = time.time()
-    #     examples = int(len(symbols) / thread_num)
-    #     processes = []
-
-    #     for i in range(thread_num):
-            
-    #         if i!=thread_num-1:
-    #             part = threading.Thread(target=getS.get_part, args=(symbols, interval, start_time, end_time, store_to, i*examples, (i+1)*examples))
-    #         else:
-    #             part = threading.Thread(target=getS.get_part, args=(symbols, interval, start_time, end_time, store_to, i*examples, None))
-    #         processes.append(part)
-        
-    #     for process in processes:
-    #         process.start()
-    #     for process in processes:
-    #         process.join()
-        
-    #     end_time = time.time()
-    #     elapsed_time = end_time - start_time
-    #     formatted_time = str(timedelta(seconds=elapsed_time))
-    #     if timing:
-    #         print(f"获取数据所用时间：{formatted_time}")
 
 
 class getF:
@@ -168,7 +134,16 @@ class getF:
             'limit':500,
             'startTime':start_stamp
             }
-            response = requests.get(url=baseurl+kline_path, params=query_dict)
+            for _ in range(5):
+                try:
+                    response = requests.get(url=baseurl+kline_path, params=query_dict)
+                    break
+                except:
+                    if _ < 4:
+                        continue
+                    else:
+                        print('响应失败')
+                        sys.exit()
             single_kline = response.json()
             if single_kline[0][0] == start_stamp:
                 if single_kline[-1][0] > end_stamp:
@@ -203,49 +178,33 @@ class getF:
         low_column = np.array(hist_data['low'])
         return high_column.astype(np.float64), low_column.astype(np.float64)
 
-    # # 多线程准备工作—编写函数
-    # def get_part(symbols, interval:str, start_time:str, end_time:str, first, last, store_to='./'):
-
-    #     for symbol in symbols[first: last]:
-    #         try:
-    #             df = getF.get_hist_data(symbol=symbol, interval=interval, start_time=start_time, end_time=end_time)
-    #             df.to_csv(store_to + f'F{symbol}.csv', index=False)
-    #         except:
-    #             pass
+if __name__ == '__main__':
     
-    # # 多线程获取多个数据
-    # def ThreadGetAllData(interval:str, start_time:str, end_time:str, store_to='./', thread_num=15, timing=True):
+    symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 
+               'XRPUSDT', 'DOGEUSDT', 'TONUSDT', 'ADAUSDT', 
+               '1000SHIBUSDT', 'AVAXUSDT', 'TRXUSDT', 'DOTUSDT', 
+               'BCHUSDT', 'LINKUSDT', 'MATICUSDT', 'LTCUSDT', 
+               'PEOPLEUSDT', 'ICPUSDT', 'UNIUSDT', 'FILUSDT']
 
-    #     #设置币种
-    #     baseurl = 'https://fapi.binance.com'  #初始化baseurl
-    #     info_path = '/fapi/v1/exchangeInfo'
-    #     response = requests.get(baseurl+info_path)
-    #     exchange_info = response.json()
-    #     symbols_values_list = exchange_info['symbols']
-    #     symbols = []
-    #     for symbol_dict in symbols_values_list:
-    #         single_symbol = symbol_dict.get('symbol')
-    #         symbols.append(single_symbol)
-
-    #     start_time = time.time()
-    #     examples = int(len(symbols) / thread_num)
-    #     processes = []
-
-    #     for i in range(thread_num):
-            
-    #         if i!=thread_num-1:
-    #             part = threading.Thread(target=getF.get_part, args=(symbols, interval, start_time, end_time, store_to, i*examples, (i+1)*examples))
-    #         else:
-    #             part = threading.Thread(target=getF.get_part, args=(symbols, interval, start_time, end_time, store_to, i*examples, None))
-    #         processes.append(part)
-        
-    #     for process in processes:
-    #         process.start()
-    #     for process in processes:
-    #         process.join()
-        
-    #     end_time = time.time()
-    #     elapsed_time = end_time - start_time
-    #     formatted_time = str(timedelta(seconds=elapsed_time))
-    #     if timing:
-    #         print(f"获取数据所用时间：{formatted_time}")
+    def process_symbols(start, end):
+        for symbol in symbols[start:end]:
+            print(f"{symbol}开始")
+            data = getF.get_hist_data(symbol, '15m', '2021-01-01T00:00:00.000Z', '2024-05-05T00:00:00.000Z')
+            data = data[['datetime', 'open', 'high', 'low', 'close', 'vol']]
+            data.to_csv(f'D:/crypto/data/15m/{symbol}.csv', index=False)
+            print(f"{symbol}结束")
+    
+    threads = []
+    for i in range(5):
+        start = i * 4
+        end = (i + 1) * 4 if i < 4 else len(symbols)  # 最后一个线程处理剩余的元素
+        thread = threading.Thread(target=process_symbols, args=(start, end))
+        threads.append(thread)
+    
+    # 启动线程
+    for thread in threads:
+        thread.start()
+    
+    # 等待所有线程完成
+    for thread in threads:
+        thread.join()
