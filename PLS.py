@@ -62,11 +62,6 @@ def pls_value(pls_input:PLSInput):
             PosCondition = True
             net = net - open_fee
 
-            # print("open price: ", open_price)
-            # print("position: ", position)
-            # print("open fee: ", open_fee)
-
-
             ps = pls_input.ps[i]
             ls = pls_input.ls[i]
             while PosCondition:
