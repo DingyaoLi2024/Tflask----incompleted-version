@@ -1,5 +1,21 @@
 import numpy as np
 
+'''
+principal：本金
+MakerFee：开仓手续费
+TakerFee：平仓手续费
+leverage：杠杆
+signal：信号，正负代表开多或开空，数值代表仓位的比例
+open_prices：开仓价
+close_prices：收仓价
+close：收盘价
+high：最高价
+low：最低价
+ps：止盈（目前仅支持开仓时设置且不可调）
+ls：止损（目前仅支持开仓时设置且不可调）
+'''
+
+
 class PLSInput:
     def __init__(self, principal:float, MakerFee:float, TakerFee:float, leverage:float,
                  signal:np.ndarray, open_prices:np.ndarray, close_prices:np.ndarray, close:np.ndarray, high:np.ndarray, 
