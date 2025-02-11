@@ -82,10 +82,10 @@ def pls_value(pls_input:PLSInput):
             ls = pls_input.ls[i]
             while PosCondition:
                 conds[i] = 1
-                if pls_input.high[i] > ps:
+                if pls_input.high[i] >= ps and pls_input.low[i] > ls:
                     net_value[i] = net + position * (ps - open_price) - close_fee
                     PosCondition = False
-                elif pls_input.low[i] < ls:
+                elif pls_input.low[i] <= ls and pls_input.high[i] < ps:
                     net_value[i] = net + position * (ls - open_price) - close_fee
                     PosCondition = False
                 else:
@@ -116,10 +116,10 @@ def pls_value(pls_input:PLSInput):
             ls = pls_input.ls[i]
             while PosCondition:
                 conds[i] = 1
-                if pls_input.high[i] > ls:
+                if pls_input.high[i] >= ls and pls_input.low[i] > ps:
                     net_value[i] = net - position * (ls - open_price) - close_fee
                     PosCondition = False
-                elif pls_input.low[i] < ps:
+                elif pls_input.low[i] <= ps and pls_input.high[i] < ls:
                     net_value[i] = net - position * (ps - open_price) - close_fee
                     PosCondition = False
                 else:
