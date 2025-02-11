@@ -47,7 +47,7 @@ def pls_value(pls_input:PLSInput):
     while i < n:
 
         if np.isnan(pls_input.signal[i]) or pls_input.signal[i] == 0:
-            conds[i] = conds[i - 1]
+            conds[i] = 0
             net_value[i] = net_value[i - 1]
             i += 1
 
@@ -74,17 +74,14 @@ def pls_value(pls_input:PLSInput):
                 if pls_input.high[i] > ps:
                     net_value[i] = net + position * (ps - open_price) - close_fee
                     PosCondition = False
-                    conds[i] = 0
                 elif pls_input.low[i] < ls:
                     net_value[i] = net + position * (ls - open_price) - close_fee
                     PosCondition = False
-                    conds[i] = 0
                 else:
                     net_value[i] = net + position * (pls_input.close[i] - open_price)
                     if pls_input.signal[i] == 0:
                         net_value[i] = net_value[i] - close_fee
                         PosCondition = False
-                        conds[i] = 0
                 if net_value[i] < 0:
                     while i < n:
                         net_value[i] = 0
@@ -111,17 +108,14 @@ def pls_value(pls_input:PLSInput):
                 if pls_input.high[i] > ls:
                     net_value[i] = net - position * (ls - open_price) - close_fee
                     PosCondition = False
-                    conds[i] = 0
                 elif pls_input.low[i] < ps:
                     net_value[i] = net - position * (ps - open_price) - close_fee
                     PosCondition = False
-                    conds[i] = 0
                 else:
                     net_value[i] = net - position * (pls_input.close[i] - open_price)
                     if pls_input.signal[i] == 0:
                         net_value[i] = net_value[i] - close_fee
                         PosCondition = False
-                        conds[i] = 0
                 if net_value[i] < 0:
                     while i < n:
                         net_value[i] = 0
